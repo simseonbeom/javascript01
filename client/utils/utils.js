@@ -83,6 +83,30 @@ const $ = getNode;
 // - setAttr()
 // - attr()
 
+function isElementNode(node){
+
+    // 전달받은 인자가 노드라면 ture 아니면 false 
+    // 문자나 숫자면 에러를 던진다 
+    
+    // if(isNothing(node) ||  ){
+
+    // }
+    
+    
+
+    try{
+
+        return 'nodeType' in node === document.ELEMENT_NODE ? true : false;
+
+    }catch(error){
+
+        error.message    
+
+    }
+    
+
+}
+
 function getAttr(node, attrName) {
     return node.getAttribute(attrName);
 }
@@ -94,6 +118,8 @@ function setAttr(node, attrName, value) {
 function attr(node, attrName, value) {
     return !value ? getAttr(node, attrName) : setAttr(node, attrName, value);
 }
+
+
 
 /*
 
@@ -114,17 +140,18 @@ const elem = $('li > a');
 
 
 function getData(node, attrName) {
-    return getAttr(node, attrName);
+    return getAttr(node, `data-${attrName}`);
 }
 
 
 function setData(node, attrName, value) {
-    setAttr(node, attrName, value);
+    setAttr(node, `data-${attrName}`, value);
 }
 
 
 function data(node, attrName, value) {
     return !value ? getData(node, attrName) : setData(node, attrName, value);
+    
 }
 
 
@@ -196,7 +223,7 @@ function css(node,styleName,value){
     return !value ? getStyle(node,styleName) : setStyle(node,styleName,value);
 }
 
-css(elem,'color','blue')
+// css(elem,'color','blue')
 
 
 
@@ -216,3 +243,112 @@ css(elem,'color','blue')
 //   - .not.toBe(expected)
 // - test(description, callback)
 // - describe(title, callback)
+
+
+/*
+
+let while_condition = true;
+let count = 0;
+let innerCount = 0;
+let repeatingCount = 10;
+
+loopCount: while(while_condition){
+
+    ++count;
+
+    if(count === 3 || count === 7){ continue;}
+
+    while(true){
+        ++innerCount;
+        if(innerCount === repeatingCount /2) {break loopCount;}
+
+        console.log(` - innerCount : ${innerCount}`);
+    }
+
+    if(count === 6){ break;}
+    console.log(` loopCount : ${count}`);
+
+    if(count > repeatingCount){while_condition = false;}
+}
+*/
+
+/*
+
+let beverage = els('.ediya-menu-item');
+
+console.log(beverage.length) // 8*/
+
+
+/*while(i < 10){
+    ++i;
+}
+
+for(let i = 0; i < 10; ++i){
+
+}*/
+/*
+
+let i = 0;
+let j = 4;
+
+while( i < 10 ){
+    while( j > 0){
+        console.log(`j : ${j}`);
+        j = j -2;
+    }
+    console.log(`i : ${i}`);
+    ++i;
+}
+*/
+
+
+// let i = 0;
+// let j = 4;
+
+/*outFor : for(let i = 0; i < 10 ; ++i){
+    inFor : for(let j = 4; j > 0; j = j -2){
+        console.log(`j : ${j}`);
+        break outFor;
+    }
+    console.log(`i : ${i}`);
+}*/
+
+// j:4
+// j:2
+// i: 1 ~ 9
+let colors = [
+    '#FFA748',
+    '#FFBFBD',
+    '#8E3CFA',
+    '#F6FB30',
+    '#2BE3CB',
+    '#E35B2B',
+    '#27422B'
+
+]
+
+
+let menu_items = els('.ediya-menu-item');
+
+for( let i = 0; i < menu_items.length; i++){
+    let item = menu_items[i];
+    item.addEventListener('click',openPanel);
+}
+
+
+function openPanel(e){
+
+    e.preventDefault();
+
+}
+
+
+
+
+
+
+
+
+
+
+
