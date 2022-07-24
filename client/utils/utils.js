@@ -186,41 +186,25 @@ console.log();
 
 // console.log(getComputedStyle(elem).color);
 
-function getStyle(node, styleName) {
-
-    if(!styleName || styleName === ''){
-        throwError(`해당 ${styleName}스타일은 적용되어있지 않습니다`);
-    }
-
-    return node.style.getPropertyValue(styleName);
-}
-
-// console.log(getStyle(elem, 'background'));
-
-// elem.getPropertyValue()
-
-function setStyle(node, styleName, value) {
-
-
-    // node.style.color = 'blue';  // 이렇게 쓰면 되는데
-    // node.style.styleName = value // 얘는 왜 안돼?
-
-    // node.attrName.styleName = value;
-    // setAttr(node,styleName,value);
-
-    node.style.setProperty(styleName,value);
-
+function getStyle(node,styleProp){
+  
+  if(!node || node === ''){ throw new Error('node 타입이 올바르지 않습니다.')}
+  if(!styleProp || styleProp === ''){ throw new Error('속성값을 입력해주세요')}
+  return getComputedStyle(node).getPropertyValue(styleProp)
 }
 
 
 
 
-// - getStyle()
-// - setStyle()
-// - css()
+function setStyle(node,styleProp,value){
+  node.style.setProperty(styleProp,value);
+}
 
-function css(node,styleName,value){
-    return !value ? getStyle(node,styleName) : setStyle(node,styleName,value);
+
+
+function css(node,styleProp,value){
+  
+  return !value ? getStyle(node,styleProp) : setStyle(node,styleProp,value);
 }
 
 // css(elem,'color','blue')
